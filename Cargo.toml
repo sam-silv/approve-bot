@@ -1,0 +1,54 @@
+[package]
+name = "approve-bot"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "A small, auditable Slack bot that approves trusted GitHub pull requests on your behalf."
+license = "MIT"
+repository = "https://github.com/sam-silv/approve-bot"
+keywords = ["slack", "github", "pull-request", "automation"]
+categories = ["web-programming::http-server", "development-tools"]
+
+[lib]
+name = "approve_bot"
+path = "src/lib.rs"
+
+[[bin]]
+name = "approve-bot"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1.0"
+async-trait = "0.1"
+axum = "0.8"
+hex = "0.4"
+hmac = "0.12"
+http = "1.3"
+rand = "0.9"
+regex = "1.11"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+thiserror = "2.0"
+tokio = { version = "1.47", features = ["macros", "net", "rt-multi-thread", "signal", "sync"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt", "json"] }
+url = "2.5"
+
+[dev-dependencies]
+http-body-util = "0.1"
+tower = { version = "0.5", features = ["util"] }
+wiremock = "0.6"
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+strip = true
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = "warn"
+pedantic = "warn"
