@@ -40,7 +40,7 @@ url = "2.5"
 http-body-util = "0.1"
 tower = { version = "0.5", features = ["util"] }
 # 0.6.5 uses let-chains and no longer compiles on the declared Rust 1.85 MSRV.
-wiremock = "=0.6.4"
+wiremock = "=0.6.5"
 
 [profile.release]
 codegen-units = 1
