@@ -12,6 +12,9 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
+      # 0.6.5 uses let-chains and does not compile on the documented Rust 1.85 MSRV.
+      - dependency-name: wiremock
+        versions: ["0.6.5"]
   - package-ecosystem: github-actions
     directory: /
     schedule:
